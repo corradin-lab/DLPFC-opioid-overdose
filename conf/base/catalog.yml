@@ -47,4 +47,17 @@ example_iris_data:
   type: pandas.CSVDataSet
   filepath: data/01_raw/iris.csv
 
+ChIP_original_wrong_cols:
+   #metadata: File with one extra tab after chromosome end
+   type: pandas.CSVDataSet
+   filepath: data/01_raw/__FIXED_header_inherent_normalization__merge_normalized_hg19.txt
+   load_args:
+       sep: "\t"
+
+# ChIP_correct_cols:
+#    #metadata: File with one extra tab after chromosome end
+#    type: pandas.CSVDataSet
+#    filepath: data/02_intermediate/ChIP_correct_cols.tsv
+#    load_args:
+#        sep: "\t"
 
