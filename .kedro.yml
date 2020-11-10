@@ -1,0 +1,6 @@
+context_path: corradin_opioid_project.run.ProjectContext
+project_name: "Opioid Project"
+project_version: "0.16.6"
+package_name: "corradin_opioid_project"
+hooks:
+  - corradin_opioid_project.hooks.project_hooks
