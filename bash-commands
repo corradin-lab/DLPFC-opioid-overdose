@@ -1,0 +1,180 @@
+Script started on 2020-11-09 20:27:32-0500
+(jupyterlab) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m git add .
+(jupyterlab) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m ls
+[0m[0;36mbash-commands[0m  [1;34mconf[0m/  [1;34mdata[0m/  [1;34mdocs[0m/  [01;32mkedro_cli.py[0m*  [1;34mlogs[0m/  [1;34mnotebooks[0m/  [0;36mREADME.md[0m  [0;33msetup.cfg[0m  [1;34msrc[0m/
+(jupyterlab) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m git commit -[K[K[K[K[K[K[K[K[K[K[K[Kgit commit -m "initialize kedro project"
+[master (root-commit) bc1177c] initialize kedro project
+ 44 files changed, 1973 insertions(+)
+ create mode 100644 .coveragerc
+ create mode 100644 .gitignore
+ create mode 100644 .ipython/profile_default/startup/00-kedro-init.py
+ create mode 100644 .kedro.yml
+ create mode 100644 README.md
+ create mode 100644 bash-commands
+ create mode 100644 conf/README.md
+ create mode 100644 conf/base/catalog.yml
+ create mode 100644 conf/base/logging.yml
+ create mode 100644 conf/base/parameters.yml
+ create mode 100644 conf/local/.gitkeep
+ create mode 100644 data/01_raw/.gitkeep
+ create mode 100644 data/01_raw/iris.csv
+ create mode 100644 data/02_intermediate/.gitkeep
+ create mode 100644 data/03_primary/.gitkeep
+ create mode 100644 data/04_feature/.gitkeep
+ create mode 100644 data/05_model_input/.gitkeep
+ create mode 100644 data/06_models/.gitkeep
+ create mode 100644 data/07_model_output/.gitkeep
+ create mode 100644 data/08_reporting/.gitkeep
+ create mode 100644 docs/source/conf.py
+ create mode 100644 docs/source/index.rst
+ create mode 100755 kedro_cli.py
+ create mode 100644 logs/.gitkeep
+ create mode 100644 logs/journals/.gitkeep
+ create mode 100644 notebooks/.gitkeep
+ create mode 100644 setup.cfg
+ create mode 100644 src/corradin_opioid_project/__init__.py
+ create mode 100644 src/corradin_opioid_project/hooks.py
+ create mode 100644 src/corradin_opioid_project/pipelines/__init__.py
+ create mode 100644 src/corradin_opioid_project/pipelines/data_engineering/README.md
+ create mode 100644 src/corradin_opioid_project/pipelines/data_engineering/__init__.py
+ create mode 100644 src/corradin_opioid_project/pipelines/data_engineering/nodes.py
+ create mode 100644 src/corradin_opioid_project/pipelines/data_engineering/pipeline.py
+ create mode 100644 src/corradin_opioid_project/pipelines/data_science/README.md
+ create mode 100644 src/corradin_opioid_project/pipelines/data_science/__init__.py
+ create mode 100644 src/corradin_opioid_project/pipelines/data_science/nodes.py
+ create mode 100644 src/corradin_opioid_project/pipelines/data_science/pipeline.py
+ create mode 100644 src/corradin_opioid_project/run.py
+ create mode 100644 src/requirements.txt
+ create mode 100644 src/setup.py
+ create mode 100644 src/tests/__init__.py
+ create mode 100644 src/tests/pipelines/__init__.py
+ create mode 100644 src/tests/test_run.py
+(jupyterlab) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m conda activate --[K[Klearn-new-pkgs
+(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m conda activate learn-new-pkgsgit commit -m "initialize kedro project"[11Pconda activate learn-new-pkgs[K[K(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m [K(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m [K(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m [K(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m ls
+[0m[0;36mbash-commands[0m  [1;34mconf[0m/  [1;34mdata[0m/  [1;34mdocs[0m/  [01;32mkedro_cli.py[0m*  [1;34mlogs[0m/  [1;34mnotebooks[0m/  [0;36mREADME.md[0m  [0;33msetup.cfg[0m  [1;34msrc[0m/
+(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m dvc init
+
+You can now commit the changes to git.
+
+[31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m             <[36mhttps://dvc.org/doc/user-guide/analytics[39m>              [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+[33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: <[36mhttps://dvc.org/doc[39m>
+- Get help and share ideas: <[36mhttps://dvc.org/chat[39m>
+- Star us on GitHub: <[36mhttps://github.com/iterative/dvc[39m>
+[0m(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m l[Kdvc add data/01_raw/
+__FIXED_header_inherent_normalization__merge_normalized_hg19.txt  iris.csv
+.gitkeep                                                          
+(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m dvc add data/01_raw/__FIXED_header_inherent_normalizaation__merge_normalized_hg19.txt [K/[K
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !  0% Add|                                                                                                        |0/1 [00:00<?,     ?file/s]Adding...                                                                                                                                   100% Add|██████████████████████████████████████████████████████████████████████████████████████████████████████████|1/1 [00:08,  8.43s/file]
+
+To track the changes with git, run:
+
+	git add data/01_raw/__FIXED_header_inherent_normalization__merge_normalized_hg19.txt.dvc
+[0m(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m [K(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m [K(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m [K(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m [K(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m ls -al
+total 48
+drwxr-sr-x 12 anhoang corbiobank 4096 Nov  9 20:37 [0m[1;34m.[0m/
+drwxr-sr-x  4 anhoang corbiobank  116 Nov  9 20:24 [1;34m..[0m/
+-rw-r--r--  1 anhoang corbiobank 8192 Nov  9 20:39 [0;36mbash-commands[0m
+drwxr-sr-x  4 anhoang corbiobank   64 Nov  9 20:02 [1;34mconf[0m/
+-rw-rw-r--  1 anhoang corbiobank  107 Nov  9 20:02 [0;36m.coveragerc[0m
+drwxr-sr-x 10 anhoang corbiobank  197 Nov  9 20:02 [1;34mdata[0m/
+drwxr-sr-x  3 anhoang corbiobank   28 Nov  9 20:02 [1;34mdocs[0m/
+drwxr-sr-x  5 anhoang corbiobank   99 Nov  9 20:39 [1;34m.dvc[0m/
+-rw-r--r--  1 anhoang corbiobank  139 Nov  9 20:37 [0;36m.dvcignore[0m
+drwxr-sr-x  8 anhoang corbiobank  236 Nov  9 20:39 [1;34m.git[0m/
+-rw-rw-r--  1 anhoang corbiobank 1883 Nov  9 20:02 [0;36m.gitignore[0m
+drwxr-sr-x  2 anhoang corbiobank   43 Nov  9 20:07 [1;34m.ipynb_checkpoints[0m/
+drwxr-sr-x  3 anhoang corbiobank   37 Nov  9 20:02 [1;34m.ipython[0m/
+-rwxrwxr-x  1 anhoang corbiobank 9157 Nov  9 20:02 [01;32mkedro_cli.py[0m*
+-rw-rw-r--  1 anhoang corbiobank  209 Nov  9 20:02 [0;36m.kedro.yml[0m
+drwxr-sr-x  3 anhoang corbiobank   50 Nov  9 20:02 [1;34mlogs[0m/
+drwxr-sr-x  2 anhoang corbiobank   30 Nov  9 20:02 [1;34mnotebooks[0m/
+-rw-rw-r--  1 anhoang corbiobank 4039 Nov  9 20:02 [0;36mREADME.md[0m
+-rw-rw-r--  1 anhoang corbiobank  229 Nov  9 20:02 [0;33msetup.cfg[0m
+drwxr-sr-x  4 anhoang corbiobank  110 Nov  9 20:02 [1;34msrc[0m/
+(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m ls -al[Kls -alh data/01_raw/
+total 512M
+drwxr-sr-x  2 anhoang corbiobank  206 Nov  9 20:39 [0m[1;34m.[0m/
+drwxr-sr-x 10 anhoang corbiobank  197 Nov  9 20:02 [1;34m..[0m/
+-rw-r--r--  1 anhoang corbiobank 368M Nov  9 20:39 [00;35m__FIXED_header_inherent_normalization__merge_normalized_hg19.txt[0m
+-rw-r--r--  1 anhoang corbiobank  119 Nov  9 20:39 [0;36m__FIXED_header_inherent_normalization__merge_normalized_hg19.txt.dvc[0m
+-rw-rw-r--  1 anhoang corbiobank    0 Nov  9 20:02 [0;36m.gitkeep[0m
+-rw-rw-r--  1 anhoang corbiobank 3.8K Nov  9 20:02 [0;36miris.csv[0m
+(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m ls -alh data/01_raw/.dvc
+ls: cannot access 'data/01_raw/.dvc': No such file or directory
+(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m git add data/01_raw/__FIXED_header_inherent_nnormalization__merge_normalized_hg19.txt.dvc
+The following paths are ignored by one of your .gitignore files:
+data/01_raw/__FIXED_header_inherent_normalization__merge_normalized_hg19.txt.dvc
+Use -f if you really want to add them.
+(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m git add data/01_raw/__FIXED_header_inherent_nnormalization__merge_normalized_hg19.txt.dvc -f[K[K^C
+(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m vim .gitignore 
+[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;20r[?12h[?12l[27m[23m[29m[m[H[2J[?25l[20;1H".gitignore" 157L, 1883C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[34m##########################
+# KEDRO PROJECT
+
+# ignore all local configuration[m
+conf/local/**
+!conf/local/.gitkeep
+
+[34m# ignore potentially sensitive credentials files[m
+conf/**/*credentials*
+
+[34m# ignore everything in the following folders[m
+data/**
+logs/**
+
+[34m# except their sub-folders[m
+!data/**/
+!logs/**/
+
+[34m# also keep all .gitkeep files[m[20;115H1,1[11CTop[1;1H[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12$p[?25l[20;105H~@k[1;1H[20;105H   [2;1H[20;115H2[2;1H[?25h[?25l[20;105H~@k[2;1H[20;105H   [3;1H[20;115H3,0-1[3;1H[?25h[?25l[20;105H~@k[3;1H[20;105H   [4;1H[20;115H4,1  [4;1H[?25h[?25l[20;105H~@k[4;1H[20;105H   [5;1H[20;115H5[5;1H[?25h[?25l[20;105H~@k[5;1H[20;105H   [6;1H[20;115H6[6;1H[?25h[?25l[20;105H~@k[6;1H[20;105H   [7;1H[20;115H7,0-1[7;1H[?25h[?25l[20;105H~@k[7;1H[20;105H   [8;1H[20;115H8,1  [8;1H[?25h[?25l[20;105H~@k[8;1H[20;105H   [9;1H[20;115H9[9;1H[?25h[?25l[20;105H~@k[9;1H[20;105H   [10;1H[20;115H10,0-1[10;1H[?25h[?25l[20;105H~@k[10;1H[20;105H   [11;1H[20;116H1,1  [11;1H[?25h[?25l[20;105H~@k[11;1H[20;105H   [12;1H[20;116H2[12;1H[?25h[?25l[20;105H~@k[12;1H[20;105H   [13;1H[20;116H3[13;1H[?25h[?25l[20;105H~@k[13;1H[20;105H   [14;1H[20;116H4,0-1[14;1H[?25h[?25l[20;105H~@k[14;1H[20;105H   [14;1H[1;19r[19;1H
+[1;20r[19;1H!.gitkeep[20;1H[K[20;115H15,1[11C0%[14;1H[?25h[?25l[20;105H~@k[14;1H[20;105H   [14;1H[1;19r[19;1H
+[1;20r[20;115H[K[20;115H16,1[11C1%[14;1H[?25h[?25l[20;105H~@k[14;1H[20;105H   [14;1H[1;19r[19;1H
+[1;20r[19;1H[34m# also keep the example dataset[m[20;115H[K[20;115H17,1[11C2%[14;1H[?25h[?25l[20;105H~@k[14;1H[20;105H   [14;1H[1;19r[19;1H
+[1;20r[19;1H!data/01_raw/iris.csv[20;115H[K[20;115H18,0-1[9C2%[14;1H[?25h[?25l[20;105H![14;1H[?25h[?25l[20;106Hi[14;1H[?25h[?25l[20;107H![14;1H[20;105H   [14;1H[?25h[?25l[20;105H~@k[14;1H[20;105H   [14;1H[1;19r[19;1H
+[1;20r[20;115H[K[20;115H19,1[11C3%[14;1H[?25h[?25l[20;105H~@k[14;1H[20;105H   [14;1H[1;19r[19;1H
+[1;20r[20;115H[K[20;115H20,1[11C4%[14;1H[?25h[?25l[20;105H~@k[14;1H[20;105H   [14;1H[1;19r[19;1H
+[1;20r[19;1H[34m##########################[m[20;115H[K[20;115H21,0-1[9C5%[14;1H[?25h[?25l[20;105H![14;1H[?25h[?25l[20;106Hi[14;1H[?25h[?25l[20;107H^[[14;1H[20;107H  [14;1H[20;107H^[[14;1H[20;105H    [14;1H[?25h[?25l[20;105H:[14;1H[20;105H[K[20;1H:[?2004h[?25hw[?25l[?25hq[?25l[?25h[?25l[20;3H[K[20;3H[?25h[?25l[20;2H[K[20;2H[?25h [?25l[14;1H[20;115H21,0-1[9C5%[14;1H[?25h[?25l[20;105H~@k[14;1H[20;105H   [13;9H[20;116H0,9  [13;9H[?25h[?25l[20;105H~@k[13;9H[20;105H   [13;9H[?25h[?25l[20;105H~@k[13;9H[20;105H   [13;9H[?25h[?25l[20;105H~@k[13;9H[20;105H   [14;1H[20;116H1,0-1[14;1H[?25h[?25l[20;105Hi[14;1H[20;105H [14;1H[20;1H[1m-- INSERT --[m[20;115H[K[20;115H21,1[11C5%[14;1H[?25h[?25l![20;118H2[14;2H[?25h[?25l.[20;118H3[14;3H[?25h[?25l[14;2H[K[20;118H2[14;2H[?25h[?25l[14;1H[K[20;118H1[14;1H[?25h[?25l[1;19r[19;1H
+[1;20r[14;19r[14;1H[L[1;20r[20;115H[K[20;115H22,1[11C5%[14;1H[?25h[?25l[34m#[m[20;118H2[14;2H[?25h[?25l[34ma[m[20;118H3[14;3H[?25h[?25l[34ml[m[20;118H4[14;4H[?25h[?25l[34ms[m[20;118H5[14;5H[?25h[?25l[34mo[m[20;118H6[14;6H[?25h[?25l[34m [m[20;118H7[14;7H[?25h[?25l[34mk[m[20;118H8[14;8H[?25h[?25l[34me[m[20;118H9[14;9H[?25h[?25l[34me[m[20;118H10[14;10H[?25h[?25l[34mp[m[20;119H1[14;11H[?25h[?25l[34m [m[20;119H2[14;12H[?25h[?25l[34mt[m[20;119H3[14;13H[?25h[?25l[34mh[m[20;119H4[14;14H[?25h[?25l[34me[m[20;119H5[14;15H[?25h[?25l[34m [m[20;119H6[14;16H[?25h[?25l[14;15H[K[20;119H5[14;15H[?25h[?25l[14;14H[K[20;119H4[14;14H[?25h[?25l[14;13H[K[20;119H3[14;13H[?25h[?25l[14;12H[K[20;119H2[14;12H[?25h[?25l[34mf[m[20;119H3[14;13H[?25h[?25l[34mi[m[20;119H4[14;14H[?25h[?25l[34ml[m[20;119H5[14;15H[?25h[?25l[34me[m[20;119H6[14;16H[?25h[?25l[34ms[m[20;119H7[14;17H[?25h[?25l[34m [m[20;119H8[14;18H[?25h[?25l[34mg[m[20;119H9[14;19H[?25h[?25l[34me[m[20;118H20[14;20H[?25h[?25l[34mn[m[20;119H1[14;21H[?25h[?25l[34me[m[20;119H2[14;22H[?25h[?25l[34mr[m[20;119H3[14;23H[?25h[?25l[34ma[m[20;119H4[14;24H[?25h[?25l[34mt[m[20;119H5[14;25H[?25h[?25l[34me[m[20;119H6[14;26H[?25h[?25l[34md[m[20;119H7[14;27H[?25h[?25l[34m [m[20;119H8[14;28H[?25h[?25l[34mb[m[20;119H9[14;29H[?25h[?25l[34my[m[20;118H30[14;30H[?25h[?25l[34m [m[20;119H1[14;31H[?25h[?25l[34md[m[20;119H2[14;32H[?25h[?25l[14;31H[K[20;119H1[14;31H[?25h[?25l[34mD[m[20;119H2[14;32H[?25h[?25l[34mV[m[20;119H3[14;33H[?25h[?25l[34mC[m[20;119H4[14;34H[?25h[?25l[1;19r[19;1H
+[1;20r[14;19r[14;1H[L[1;20r[14;1H[34m#[m[20;115H[K[20;115H23,2[11C6%[14;2H[?25h[?25l[14;1H[K[20;118H1[14;1H[?25h[?25l[13;19r[19;1H
+[1;20r[13;1H[34m#also keep files generated by DVC[19;1H# Common files[m[20;115H[K[20;115H22,34[10C6%[13;34H[?25h[?25l[14;19r[14;1H[L[1;20r[14;1H[34m#[m[20;115H[K[20;115H23,2[11C6%[14;2H[?25h[?25l[1;19r[19;1H
+[1;20r[14;19r[14;1H[L[1;20r[14;1H[34m#[m[20;115H[K[20;115H24,2[11C7%[14;2H[?25h[?25l[14;1H[K[20;118H1[14;1H[?25h[?25l[13;19r[19;1H
+[1;20r[13;1H[34m#[19;1H# Common files[m[20;115H[K[20;115H23,2[11C7%[13;2H[?25h[?25l[13;1H[K[20;118H1[13;1H[?25h[?25l![20;118H2[13;2H[?25h[?25l.[20;118H3[13;3H[?25h[?25l[14;19r[14;1H[L[1;20r[20;115H[K[20;115H24,1[11C7%[14;1H[?25h[?25l[20;116H3[13;1H[?25h[?25l[20;118H2[13;2H[?25h[?25l[20;118H3[13;3H[?25h[?25ld[20;118H4[13;4H[?25h[?25lv[20;118H5[13;5H[?25h[?25lc[20;118H6[13;6H[?25h[20;1H[K[13;5H[?25l[20;105H^[[13;5H[20;105H  [13;6H[20;115H23,5[11C7%[13;5H[?25h[?25l[20;105H:[13;5H[20;105H[K[20;1H:[?2004h[?25hw[?25l[?25hq[?25l[?25h[?25l[?2004l".gitignore" 160L, 1924C written
+[?2004l[?1l>[?25h[?1049l[23;0;0t(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m vim .gitignore git add data/01_raw/__FIXED_header_inherent_nnormalization__merge_normalized_hg19.txt.dvc
+The following paths are ignored by one of your .gitignore files:
+data/01_raw/__FIXED_header_inherent_normalization__merge_normalized_hg19.txt.dvc
+Use -f if you really want to add them.
+(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m git add data/01_raw/__FIXED_header_inherent_nnormalization__merge_normalized_hg19.txt.dvc[A(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m [29Pvim .gitignore 
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;20r[?12h[?12l[27m[23m[29m[m[H[2J[?25l[20;1H".gitignore" 160L, 1924C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[2;1H[34m# ignore everything in the following folders[m
+data/**
+logs/**
+
+[34m# except their sub-folders[m
+!data/**/
+!logs/**/
+
+[34m# also keep all .gitkeep files[m
+!.gitkeep
+
+[34m#also keep files generated by DVC[m
+!.dvc
+
+[34m# also keep the example dataset[m
+!data/01_raw/iris.csv[20;115H23,5[11C6%[14;5H[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12$p[?25l[20;105H^[[14;5H[20;105H  [14;5H[20;105H^[[14;5H[20;105H  [14;5H[?25h[?25l[20;105H~@k[14;5H[20;105H   [14;4H[20;118H4[14;4H[?25h[?25l[20;105H~@k[14;4H[20;105H   [14;3H[20;118H3[14;3H[?25h[?25l[20;105H~@k[14;3H[20;105H   [14;2H[20;118H2[14;2H[?25h[?25l[20;105H*[14;2H[20;1H/\<dvc\>[20;9H[K[20;1H[31msearch hit BOTTOM, continuing at TOP[14;3H[m[20;115H23,3[11C6%[20;115H[K[20;115H23,3[11C6%[14;3H[?25h[?25l[20;105H^[[14;3H[20;105H  [14;3H[20;105H^[[14;3H[20;105H  [14;3H[?25h[?25l[20;105H^[[14;3H[20;105H  [14;3H[20;105H^[[14;3H[20;105H  [14;3H[?25h[?25l[20;105H^[[14;3H[20;105H  [14;3H[20;105H^[[14;3H[20;105H  [14;3H[?25h[?25l[20;105H^[[14;3H[20;105H  [14;3H[20;105H^[[14;3H[20;105H  [14;3H[?25h[?25l[20;105H^[[14;3H[20;105H  [14;3H[20;105H^[[14;3H[20;105H  [14;3H[?25h[?25l[20;105Hi[14;3H[20;105H [14;3H[20;1H[1m-- INSERT --[m[20;13H[K[20;115H23,3[11C6%[14;3H[?25h[?25l[20;118H2[14;2H[?25h[?25l*.dvc[20;118H3[14;3H[?25h[20;1H[K[14;2H[?25l[20;105H^[[14;2H[20;105H  [14;3H[20;115H23,2[11C6%[14;2H[?25h[?25l[20;105H:[14;2H[20;105H[K[20;1H:[?2004h[?25hw[?25l[?25hq[?25l[?25h[?25l[?2004l".gitignore" 160L, 1925C written
+[?2004l[?1l>[?25h[?1049l[23;0;0t(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m vim .gitignore git add data/01_raw/__FIXED_header_inherent_nnormalization__merge_normalized_hg19.txt.dvc
+(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m git add data/01_raw/.
+./        ../       .gitkeep  
+(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m git add data/01_raw/.
+./        ../       .gitkeep  
+(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m git add data/01_raw/.g[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kgit add data/01_raw/__FIXED_header_inherent_nnormalization__merge_normalized_hg19.txt.dvc[A(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m [29Pvim .gitignore 
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit add data/01_raw/__FIXED_header_inherent_nnormalization__merge_normalized_hg19.txt.dvc[A(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m [29Pvim .gitignore 
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit add data/01_raw/__FIXED_header_inherent_nnormalization__merge_normalized_hg19.txt.dvc[A(learn-new-pkgs) ]0;anhoang@c2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-projectanhoang[0;31m@[0mc2b9 /lab/corradin_biobank/FOR_AN/Opioid_fixed/opioid-project[0;31m$[00m [20Pls -alh data/01_raw/.dvc
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
