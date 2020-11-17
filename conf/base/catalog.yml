@@ -50,14 +50,63 @@ example_iris_data:
 ChIP_original_wrong_cols:
    #metadata: File with one extra tab after chromosome end
    type: pandas.CSVDataSet
-   filepath: data/01_raw/__FIXED_header_inherent_normalization__merge_normalized_hg19.txt
+   filepath: "data/01_raw/__FIXED_header_inherent_normalization__merge_normalized_hg19.txt"
    load_args:
        sep: "\t"
+       
+sample_covs:
+    type: pandas.ExcelDataSet
+    filepath: "data/01_raw/ChIP_Seq_samples_demographics_qc_stats_master_111519_1.xlsx"
+    load_args:
+        sheet_name: "All_good_libraries"
 
-# ChIP_correct_cols:
-#    #metadata: File with one extra tab after chromosome end
-#    type: pandas.CSVDataSet
-#    filepath: data/02_intermediate/ChIP_correct_cols.tsv
-#    load_args:
-#        sep: "\t"
+sample_covs_cleaned_inherent_samples_only:
+    type: pandas.CSVDataSet
+    filepath: "data/02_intermediate/inherent_norm_sample_covs.tsv"
+    load_args:
+        sep: "\t"
+    save_args:
+        sep: "\t"
+
+ChIP_correct_cols:
+   #metadata: File with one extra tab after chromosome end
+   type: pandas.CSVDataSet
+   filepath: data/02_intermediate/ChIP_correct_cols_102_samples_655_505_peaks.tsv
+   load_args:
+       sep: "\t"
+   save_args:
+        sep: "\t"
+        
+ChIP_correct_cols_transposed:
+   #metadata: File with one extra tab after chromosome end
+   type: pandas.CSVDataSet
+   filepath: data/02_intermediate/ChIP_correct_cols_102_samples_655_505_peaks_transposed.tsv
+   load_args:
+       sep: "\t"
+   save_args:
+        sep: "\t"
+
+important_covs_and_cc_status:
+   type: pandas.CSVDataSet
+   filepath: data/02_intermediate/important_covs_and_cc_status.tsv
+   load_args:
+       sep: "\t"
+   save_args:
+        sep: "\t"
+        
+important_covs_and_cc_status_dummified:
+   type: pandas.CSVDataSet
+   filepath: data/02_intermediate/important_covs_and_cc_status_dummified.tsv
+   load_args:
+       sep: "\t"
+   save_args:
+        sep: "\t"
+
+ML_X_y_matrix:
+   type: pandas.CSVDataSet
+   filepath: data/02_intermediate/ML_X_y_matrix.tsv
+   load_args:
+       sep: "\t"
+   save_args:
+        sep: "\t"
 
