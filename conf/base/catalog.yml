@@ -77,18 +77,18 @@ ChIP_correct_cols:
    save_args:
         sep: "\t"
         
-ChIP_correct_cols_transposed:
-   #metadata: File with one extra tab after chromosome end
-   type: pandas.CSVDataSet
-   filepath: data/02_intermediate/ChIP_correct_cols_102_samples_655_505_peaks_transposed.tsv
-   load_args:
-       sep: "\t"
-   save_args:
-        sep: "\t"
+# ChIP_correct_cols_transposed:
+#    #metadata: File with one extra tab after chromosome end
+#    type: pandas.CSVDataSet
+#    filepath: data/02_intermediate/ChIP_correct_cols_102_samples_655_505_peaks_transposed.tsv
+#    load_args:
+#        sep: "\t"
+#    save_args:
+#         sep: "\t"
 
 important_covs_and_cc_status:
    type: pandas.CSVDataSet
-   filepath: data/02_intermediate/important_covs_and_cc_status.tsv
+   filepath: data/03_primary/important_covs_and_cc_status.tsv
    load_args:
        sep: "\t"
    save_args:
@@ -96,7 +96,7 @@ important_covs_and_cc_status:
         
 important_covs_and_cc_status_dummified:
    type: pandas.CSVDataSet
-   filepath: data/02_intermediate/important_covs_and_cc_status_dummified.tsv
+   filepath: data/04_feature/important_covs_and_cc_status_dummified.tsv
    load_args:
        sep: "\t"
    save_args:
@@ -104,9 +104,8 @@ important_covs_and_cc_status_dummified:
 
 ML_X_y_matrix:
    type: pandas.CSVDataSet
-   filepath: data/02_intermediate/ML_X_y_matrix.tsv
+   filepath: "data/05_model_input/ML_X_y_matrix.tsv"
    load_args:
        sep: "\t"
    save_args:
         sep: "\t"
-

@@ -35,7 +35,13 @@ Delete this when you start working on your own Kedro project.
 from kedro.pipeline import Pipeline, node
 
 from .nodes import split_data
-
+from ._00_data_cleaning import (
+    fix_chipseq_df_columns,
+    transpose_case_row_col_peak,
+    process_sample_covs,
+    make_processed_datasets,
+    make_ML_matrix,
+)
 
 def create_pipeline(**kwargs):
     return Pipeline(
@@ -49,6 +55,40 @@ def create_pipeline(**kwargs):
                     test_x="example_test_x",
                     test_y="example_test_y",
                 ),
-            )
+            ),
+            node(
+                func = fix_chipseq_df_columns,
+                inputs = ["ChIP_original_wrong_cols"],
+                outputs = "ChIP_correct_cols",
+                name = "Fix unnamed/shifted columns in ChIP data"
+            ),
+            node(
+                func = transpose_case_row_col_peak,
+                inputs = ["ChIP_correct_cols"],
+                outputs = "ChIP_correct_cols_transposed",
+                name = "Transpose row = sample, col = peaks"
+            ),
+            node(
+                func = process_sample_covs,
+                inputs = ["sample_covs"],
+                outputs = "sample_covs_cleaned",
+                name = "Clean covs data entry mistakes"
+            ),
+            
+            node(
+                func = make_processed_datasets,
+                inputs = ["sample_covs_cleaned", "ChIP_correct_cols_transposed", "params:important_covs" ],
+                outputs = ["sample_covs_cleaned_inherent_samples_only", "important_covs_and_cc_status"],
+                name = "Create covs datasets with only samples in ChIP data and important covs"
+            ),
+            
+            node(
+                func = make_ML_matrix,
+                inputs = ["important_covs_and_cc_status", "ChIP_correct_cols_transposed"],
+                outputs = ["important_covs_and_cc_status_dummified", "ML_X_y_matrix"],
+                name = "Dummify category vars and join ChIP + covs"
+            ),
+            
+            
         ]
     )
