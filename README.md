@@ -1,6 +1,5 @@
 # Opioid Project
 ## How to reproduce the results in the paper
-
 1. Clone the project
 
 ```bash
@@ -8,14 +7,16 @@ git clone https://github.com/corradin-lab/opioid-project.git
 cd opioid-project
 ```
 2. Set up environment
-	- If you use conda:
+
+- If you use conda:
 ```bash
 conda create -n test_opioid_env python=3.8
 conda activate test_opioid_env #use `conda deactivate` to exit
 ```
-	- If you don’t use conda:
-```bash
+	
+- If you don’t use conda:
 
+```bash
 python -m venv test_opioid_env
 source test_opioid_env/bin/activate
 
@@ -24,16 +25,23 @@ source test_opioid_env/bin/activate
 Check that your output for `which python`  is `<path/to/environment/test-opioid/bin/python>` , and output of `which pip` is `<path/to/environment/test-opioid/bin/pip>`
 
 3. Install packages
-`pip install dvc corradin_opioid_project`
+
+Run `pip install dvc corradin_opioid_project`
+
 [Data Version Control · DVC](https://dvc.org/) is for pulling raw data, while `corradin_opioid_project`  is the python package that contains all the pipelines to reproduce the results
 
-4. `dvc pull`  to download the raw data  
+4. Download the raw data
+
+Run `dvc pull`
+
 You will be request to go to a google drive link to confirm that you are the owner of a google drive account that has access to this file. Type this link in the browser and sign into google drive, then copy the code back to the terminal. If you fail at this step, it means that the data has not been shared with you. Please contact An Hoang (anhoang@wi.mit.edu) to get access.
 
 **NOTE:**  If you are a Whitehead researcher, make sure that you sign in with your Whitehead GDrive account
 The data is on google drive and has to be shared with you
 
-5. Run command: `python -m corradin_opioid_project.run` , you should see a pipeline running to process the data
+5. Run the pipeline
+
+Run command: `python -m corradin_opioid_project.run` , you should see a pipeline running to process the data
 
 ---
 # Kedro README
